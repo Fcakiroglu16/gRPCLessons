@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "gRPCLessons": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5082;https://localhost:7235",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

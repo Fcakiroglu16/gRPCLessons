@@ -1,0 +1,67 @@
+syntax ="proto3";
+package  gRPCProductCRUD.Demo.v1;
+option  csharp_namespace="ProductCRUD.gRPC";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service  ProductService
+{
+  
+  rpc GetAll(google.protobuf.Empty) returns (stream  ProductResponse){} // Server Streaming
+  rpc GetById(ProductIdRequest) returns(ProductResponse){} //Unary Streaming
+  rpc Create(stream ProductCreateRequest) returns (stream ProductCreateResponse){} //Bidirectional Streaming
+  rpc Update(ProductUpdateRequest) returns(google.protobuf.Empty){} // Unary Streaming
+  rpc Delete(stream ProductIdRequest) returns (google.protobuf.Empty){} //Client Steaming 
+  
+}
+
+
+
+message  ProductResponse
+{
+  int32 Id=1;
+  string Name=2;
+  double Price=3;
+  int32  Stock=4;
+  ProductType ProductType=5;
+  string CategoryName=6;
+  google.protobuf.Timestamp CreatedDate=7;
+}
+
+message  ProductCreateResponse
+{
+  int32 Id=1;
+}
+message ProductCreateRequest
+{
+  string Name=1;
+  double Price=2;
+  int32  Stock=3;
+  ProductType ProductType=4;
+  string CategoryName=5;
+  
+}
+
+message ProductUpdateRequest
+{
+  int32 Id=1;
+  string Name=2;
+  double Price=3;
+  int32  Stock=4;
+  ProductType ProductType=5;
+  string CategoryName=6;
+
+}
+
+
+message  ProductIdRequest
+{
+  int32  Id=1;
+}
+
+enum  ProductType
+{
+    Large=0;
+    Medium=1;
+    Small=2;
+}

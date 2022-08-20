@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>gRPCLessons</RootNamespace>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+
+        <Protobuf Include="Protos\productservice.proto" GrpcServices="Server"></Protobuf>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.40.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.8"/>
+    </ItemGroup>
+
+</Project>
