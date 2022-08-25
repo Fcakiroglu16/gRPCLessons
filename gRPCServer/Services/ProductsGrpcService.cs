@@ -40,7 +40,12 @@ public class ProductsGrpcService : ProductService.ProductServiceBase
 
         var products = await _context.Products.ConverToProductResponse().ToListAsync();
 
-        foreach (var productResponse in products) await responseStream.WriteAsync(productResponse);
+        foreach (var productResponse in products)
+        {
+            
+            await responseStream.WriteAsync(productResponse);
+            await Task.Delay(2000);
+        }
     }
 
     public override async Task<ProductResponse> GetById(ProductIdRequest request, ServerCallContext context)

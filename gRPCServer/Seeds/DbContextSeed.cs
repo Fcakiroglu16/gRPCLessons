@@ -12,6 +12,19 @@ public class DbContextSeed
                 "Pens",
             Type = 1
         });
+        
+        await context.Products.AddAsync(new Product
+        {
+            Name = "Pen 2", Price = 100, Created = DateTime.Now, CategoryName =
+                "Pens",
+            Type = 1
+        });
+        await context.Products.AddAsync(new Product
+        {
+            Name = "Pen 3", Price = 100, Created = DateTime.Now, CategoryName =
+                "Pens",
+            Type = 1
+        });
         await context.SaveChangesAsync();
     }
 }

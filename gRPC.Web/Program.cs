@@ -1,5 +1,6 @@
 
 
+using gRPC.Web.Services;
 using ProductCRUD.gRPC;
 using static ProductCRUD.gRPC.ProductService;
 
@@ -9,8 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-
-
+builder.Services.AddScoped<gRPCProductService>();
 builder.Services.AddGrpcClient<ProductServiceClient>(o =>
 {
 o.Address = new Uri("http://localhost:5000");
