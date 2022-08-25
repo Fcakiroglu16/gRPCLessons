@@ -9,21 +9,11 @@ using ProductCRUD.gRPC;
 var channel = GrpcChannel.ForAddress("http://localhost:5000");
 var  productService=  new ProductService.ProductServiceClient(channel);
 
-
-
-
 await GetById(productService,1);
 await CreateProduct(productService);
 await UpdateProduct(productService);
 await GetProductList(productService);
 await DeleteProduct(productService);
-
-
-
-
-
-
-
 
 async Task GetProductList(ProductService.ProductServiceClient 
 productServiceClient)
