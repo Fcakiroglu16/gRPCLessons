@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using gRPC.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace gRPC.Web.Controllers;
 

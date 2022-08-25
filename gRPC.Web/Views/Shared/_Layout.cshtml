@@ -25,25 +25,31 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="List">Product List</a>
                     </li>
-                    
+
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" 
-                           asp-action="Create">Create</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Products"
+                           asp-action="Create">
+                            Create
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" 
-                           asp-action="Update">Update</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Products"
+                           asp-action="Update">
+                            Update
+                        </a>
                     </li>
-                    
-                       <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" 
-                                            asp-action="Delete">Delete</a>
-                                        </li>
-                    
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Products"
+                           asp-action="Delete">
+                            Delete
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -63,6 +69,6 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>

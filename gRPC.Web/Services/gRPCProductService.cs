@@ -1,6 +1,5 @@
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using ProductCRUD.gRPC;
 
 namespace gRPC.Web.Services;
@@ -14,37 +13,30 @@ public class gRPCProductService
         _client = client;
     }
 
-
     public async IAsyncEnumerable<ProductResponse> GetAll()
     {
         using var asyncServerStreamingCall = _client.GetAll(new Empty());
-        while (await  asyncServerStreamingCall.ResponseStream.MoveNext(CancellationToken.None))
+        while (await asyncServerStreamingCall.ResponseStream.MoveNext(CancellationToken.None))
         {
             var result = asyncServerStreamingCall.ResponseStream.Current;
 
             yield return result;
-
         }
     }
 
     public async Task<List<ProductCreateResponse>> Create(ProductCreateRequest request)
     {
         var bidirectionalStream = _client.Create(new CallOptions());
-        
-      await bidirectionalStream.RequestStream.WriteAsync(request);
 
-      await bidirectionalStream.RequestStream.CompleteAsync();
+        await bidirectionalStream.RequestStream.WriteAsync(request);
 
- var productResponseList= new List<ProductCreateResponse>(); 
-      await foreach (var item in bidirectionalStream.ResponseStream.ReadAllAsync())
-      {
-       productResponseList.Add(item);
-      }
+        await bidirectionalStream.RequestStream.CompleteAsync();
 
-      return productResponseList;
+        var productResponseList = new List<ProductCreateResponse>();
+        await foreach (var item in bidirectionalStream.ResponseStream.ReadAllAsync()) productResponseList.Add(item);
 
+        return productResponseList;
     }
-
 
     public async Task Update(ProductUpdateRequest request)
     {
@@ -53,13 +45,11 @@ public class gRPCProductService
 
     public async Task Delete(ProductIdRequest request)
     {
-        var clientStream= _client.Delete();
+        var clientStream = _client.Delete();
 
-       await clientStream.RequestStream.WriteAsync(request);
+        await clientStream.RequestStream.WriteAsync(request);
 
-       await clientStream.RequestStream.CompleteAsync();
-       await  clientStream.ResponseAsync;
- 
+        await clientStream.RequestStream.CompleteAsync();
+        await clientStream.ResponseAsync;
     }
-
 }

@@ -36,13 +36,10 @@ public class ProductsGrpcService : ProductService.ProductServiceBase
     public override async Task GetAll(Empty request, IServerStreamWriter<ProductResponse> responseStream,
         ServerCallContext context)
     {
-      
-
         var products = await _context.Products.ConverToProductResponse().ToListAsync();
 
         foreach (var productResponse in products)
         {
-            
             await responseStream.WriteAsync(productResponse);
             await Task.Delay(2000);
         }
@@ -52,11 +49,8 @@ public class ProductsGrpcService : ProductService.ProductServiceBase
     {
         var product = await _context.Products.ConverToProductResponse().FirstOrDefaultAsync(x => x.Id == request.Id);
 
-        if (product == null)
-        {
-            throw new RpcException(new Status(StatusCode.NotFound, "Product not found"));
-        }
-        
+        if (product == null) throw new RpcException(new Status(StatusCode.NotFound, "Product not found"));
+
         return product;
     }
 

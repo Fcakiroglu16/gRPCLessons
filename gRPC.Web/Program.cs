@@ -1,7 +1,4 @@
-
-
 using gRPC.Web.Services;
-using ProductCRUD.gRPC;
 using static ProductCRUD.gRPC.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,14 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
 builder.Services.AddScoped<gRPCProductService>();
-builder.Services.AddGrpcClient<ProductServiceClient>(o =>
-{
-o.Address = new Uri("http://localhost:5000");
-
-
-});
+builder.Services.AddGrpcClient<ProductServiceClient>(o => { o.Address = new Uri("http://localhost:5000"); });
 
 var app = builder.Build();
 
@@ -36,7 +27,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

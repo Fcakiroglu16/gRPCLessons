@@ -14,10 +14,7 @@ builder.WebHost.ConfigureKestrel(options => { options.ListenLocalhost(5000, o =>
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
 // Add services to the container.
-builder.Services.AddGrpc(options =>
-{
-    options.EnableDetailedErrors = true;
-});
+builder.Services.AddGrpc(options => { options.EnableDetailedErrors = true; });
 
 var app = builder.Build();
 

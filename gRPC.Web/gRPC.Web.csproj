@@ -7,29 +7,29 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Protos\productservice.proto" />
+        <None Remove="Protos\productservice.proto"/>
     </ItemGroup>
-  
+
     <ItemGroup>
-      <PackageReference Include="Google.Protobuf" Version="3.21.5" />
-      <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
-      <PackageReference Include="Grpc.Net.Client" Version="2.47.0" />
-      <PackageReference Include="Grpc.Net.ClientFactory" Version="2.47.0" />
-      <PackageReference Include="Grpc.Tools" Version="2.48.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8" />
+        <PackageReference Include="Google.Protobuf" Version="3.21.5"/>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.40.0"/>
+        <PackageReference Include="Grpc.Net.Client" Version="2.47.0"/>
+        <PackageReference Include="Grpc.Net.ClientFactory" Version="2.47.0"/>
+        <PackageReference Include="Grpc.Tools" Version="2.48.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8"/>
     </ItemGroup>
-  
+
     <ItemGroup>
-      <Protobuf Include="Protos\productservice.proto" GrpcServices="Client">
-        <Access>Public</Access>
-        <ProtoCompile>True</ProtoCompile>
-        <CompileOutputs>True</CompileOutputs>
-        <OutputDir>obj\Debug/net6.0/</OutputDir>
-        <Generator>MSBuild:Compile</Generator>
-      </Protobuf>
+        <Protobuf Include="Protos\productservice.proto" GrpcServices="Client">
+            <Access>Public</Access>
+            <ProtoCompile>True</ProtoCompile>
+            <CompileOutputs>True</CompileOutputs>
+            <OutputDir>obj\Debug/net6.0/</OutputDir>
+            <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
     </ItemGroup>
 
 </Project>

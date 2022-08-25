@@ -5,9 +5,8 @@
     Layout = "_Layout";
 }
 <ul>
-@foreach (var item in Model)
-{
-    <li>@item.Id @item.Name @item.Price @item.Stock</li>
-}
+    @foreach (var item in Model)
+    {
+        <li>@item.Id @item.Name @item.Price @item.Stock</li>
+    }
 </ul>
-
